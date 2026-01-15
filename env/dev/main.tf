@@ -29,7 +29,7 @@ module "private_route_tables" {
   source = "../../modules/route-tables"
 
   vpc_id         = module.vpc.vpc_id
-  subnet_ids     = module.private_subnets.ids
+  subnet_ids = module.private_subnets.subnet_ids
   tags           = local.tags
 }
 

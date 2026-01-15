@@ -3,7 +3,7 @@ output "vpc_id" {
 }
 
 output "private_subnets" {
-  value = module.private_subnets.ids
+  value = module.private_subnets.subnet_ids
 }
 
 output "s3_bucket" {
