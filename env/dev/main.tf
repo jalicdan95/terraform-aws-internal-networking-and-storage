@@ -7,7 +7,7 @@ locals {
 
 # VPC
 module "vpc" {
-  source = "../modules/vpc"
+  source = "../../modules/vpc"
 
   cidr_block = "10.0.0.0/16"
   tags       = local.tags
@@ -16,7 +16,7 @@ module "vpc" {
 
 # Private Subnets
 module "private_subnets" {
-  source = "../modules/subnet"
+  source = "../../modules/subnet"
 
   vpc_id     = module.vpc.id
   cidrs      = ["10.0.1.0/24", "10.0.2.0/24"]
@@ -26,7 +26,7 @@ module "private_subnets" {
 
 # Route Tables
 module "private_route_tables" {
-  source = "../../modules/route-table"
+  source = "../../modules/route-tables"
 
   vpc_id         = module.vpc.id
   subnet_ids     = module.private_subnets.ids
@@ -35,7 +35,7 @@ module "private_route_tables" {
 
 # S3 Bucket
 module "s3" {
-  source = "../modules/s3"
+  source = "../../modules/s3"
 
   bucket_name = "my-private-dev-bucket"
   tags        = local.tags
@@ -43,7 +43,7 @@ module "s3" {
 
 # VPC Endpoints
 module "vpc_endpoints" {
-  source = "../modules/vpc-endpoints"
+  source = "../../modules/vpc-endpoints"
 
   vpc_id      = module.vpc.id
   route_table_ids = module.private_route_tables.ids
