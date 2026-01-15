@@ -47,6 +47,7 @@ module "vpc_endpoints" {
 
   vpc_id      = module.vpc.id
   route_table_ids = module.private_route_tables.ids
+  region          = var.aws_region
   tags         = local.tags
 }
 
