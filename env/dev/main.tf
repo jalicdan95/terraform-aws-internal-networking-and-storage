@@ -28,9 +28,14 @@ module "private_subnets" {
 module "private_route_tables" {
   source = "../../modules/route-tables"
 
-  vpc_id         = module.vpc.id
-  subnet_ids = module.private_subnets.subnet_ids
-  tags           = local.tags
+  vpc_id = module.vpc.id
+
+  subnet_map = {
+    for idx, id in module.private_subnets.subnet_ids :
+    idx => id
+  }
+
+  tags = local.tags
 }
 
 # S3 Bucket

@@ -1,5 +1,5 @@
 resource "aws_route_table" "private" {
-  for_each = toset(var.subnet_ids)
+  for_each = var.subnet_map
 
   vpc_id = var.vpc_id
 
