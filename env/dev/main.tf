@@ -18,7 +18,7 @@ module "vpc" {
 module "private_subnets" {
   source = "../../modules/subnet"
 
-  vpc_id     = module.vpc.id
+  vpc_id     = module.vpc.vpc_id
   cidrs      = ["10.0.1.0/24", "10.0.2.0/24"]
   azs        = ["us-west-2a", "us-west-2b"]
   tags       = local.tags
@@ -28,7 +28,7 @@ module "private_subnets" {
 module "private_route_tables" {
   source = "../../modules/route-tables"
 
-  vpc_id         = module.vpc.id
+  vpc_id         = module.vpc.vpc_id
   subnet_ids     = module.private_subnets.ids
   tags           = local.tags
 }
@@ -45,7 +45,7 @@ module "s3" {
 module "vpc_endpoints" {
   source = "../../modules/vpc-endpoints"
 
-  vpc_id      = module.vpc.id
+  vpc_id      = module.vpc.vpc_id
   route_table_ids = module.private_route_tables.ids
   region          = var.aws_region
   tags         = local.tags

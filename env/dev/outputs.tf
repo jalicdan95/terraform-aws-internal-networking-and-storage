@@ -7,5 +7,5 @@ output "private_subnets" {
 }
 
 output "s3_bucket" {
-  value = module.s3_bucket.bucket_id
+  value = module.s3.bucket_id
 }
