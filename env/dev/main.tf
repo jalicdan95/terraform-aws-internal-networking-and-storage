@@ -46,7 +46,7 @@ module "vpc_endpoints" {
   source = "../../modules/vpc-endpoints"
 
   vpc_id      = module.vpc.id
-  route_table_ids = module.private_route_tables.ids
+  route_table_ids = module.private_route_tables.route_table_ids
   region          = var.aws_region
   tags         = local.tags
 }
