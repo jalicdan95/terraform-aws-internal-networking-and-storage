@@ -32,7 +32,7 @@ module "private_route_tables" {
 
   subnet_map = {
     for idx, subnet in module.private_subnets.subnet_ids :
-    idx => subnet.id
+    idx => subnet
   }
 
   tags = local.tags
