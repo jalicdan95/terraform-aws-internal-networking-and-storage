@@ -31,8 +31,8 @@ module "private_route_tables" {
   vpc_id = module.vpc.id
 
   subnet_map = {
-    for idx, id in module.private_subnets.subnet_ids :
-    idx => id
+    for idx, subnet in module.private_subnets.subnet_ids :
+    idx => subnet.id
   }
 
   tags = local.tags
