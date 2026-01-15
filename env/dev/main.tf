@@ -49,3 +49,4 @@ module "vpc_endpoints" {
   route_table_ids = module.private_route_tables.ids
   tags         = local.tags
 }
+
